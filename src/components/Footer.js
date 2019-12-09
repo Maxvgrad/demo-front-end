@@ -1,5 +1,5 @@
 import React from 'react';
-import FilterLink from '../containers/FileterLink';
+import FilterLink from "../containers/FilterLink";
 import { visibilityFilters } from '../actions/actions';
 
 const Footer = () => (

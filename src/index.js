@@ -1,14 +1,16 @@
-import { addTodo, setFilter, toggleTodo, visibilityFilters } from './actions/actions';
-import { store } from "./store/createStore";
+import React from 'react';
+import {render} from 'react-dom';
+import App from "./containers/App";
+import Provider from "react-redux";
 
+import {createStore} from "redux";
+import {todoApp} from "./reducers/combineReducers";
 
-console.log(store.getState());
+const store = createStore(todoApp);
 
-const unsubscribe = store.subscribe(() => console.log(store.getState()));
-
-store.dispatch(addTodo('Cut the nails'));
-store.dispatch(addTodo('Investments'));
-store.dispatch(toggleTodo(0));
-store.dispatch(setFilter(visibilityFilters.SHOW_ALL));
-
-unsubscribe();
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+);
